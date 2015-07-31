@@ -35,6 +35,7 @@ public class DebugFragment extends Fragment implements BaseMyo.ConnectionListene
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Logy.sLoglevel = Logy.VERBOSE;
         super.onCreate(savedInstanceState);
     }
 
@@ -71,7 +72,8 @@ public class DebugFragment extends Fragment implements BaseMyo.ConnectionListene
                             myo.connect();
                             myo.setConnectionSpeed(BaseMyo.ConnectionSpeed.HIGH);
                             myo.writeSleepMode(MyoCmds.SleepMode.NEVER, null);
-                            myo.writeMode(MyoCmds.EmgMode.FILTERED, MyoCmds.ImuMode.DATA, MyoCmds.ClassifierMode.DISABLED, null);
+                            myo.writeMode(MyoCmds.EmgMode.NONE, MyoCmds.ImuMode.EVENTS, MyoCmds.ClassifierMode.ENABLED, null);
+                            myo.writeUnlock(MyoCmds.UnlockType.HOLD, null);
                             infoView.setMyo(myo);
                             mContainer.addView(infoView);
                         }

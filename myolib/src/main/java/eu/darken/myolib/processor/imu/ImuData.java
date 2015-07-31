@@ -4,8 +4,9 @@
  * mHealth - Uniklinik RWTH-Aachen.
  */
 
-package eu.darken.myolib.processor;
+package eu.darken.myolib.processor.imu;
 
+import eu.darken.myolib.processor.BaseDataPacket;
 import eu.darken.myolib.tools.ByteHelper;
 
 /**

@@ -3,8 +3,10 @@
  * Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
  * mHealth - Uniklinik RWTH-Aachen.
  */
-package eu.darken.myolib.processor;
+package eu.darken.myolib.processor.emg;
 
+import eu.darken.myolib.processor.BaseDataPacket;
+import eu.darken.myolib.processor.BaseProcessor;
 import eu.darken.myolib.services.Emg;
 
 /**
@@ -42,5 +44,8 @@ public class EmgProcessor extends BaseProcessor {
 
     public interface EmgDataListener extends DataListener {
         void onNewEmgData(EmgData emgData);
+    }
+
+    public void addListener(EmgDataListener listener) {
     }
 }

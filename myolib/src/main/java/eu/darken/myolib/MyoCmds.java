@@ -125,12 +125,24 @@ public class MyoCmds {
 
     public enum ImuMode {
         /**
-         * Disables Gyro/Acclerometer and Orientation data.
+         * Do not send IMU data or events.
          */
         NONE((byte) 0x00),
+        /**
+         * Send IMU data streams (accelerometer, gyroscope, and orientation).
+         */
         DATA((byte) 0x01),
+        /**
+         * Send motion events detected by the IMU (e.g. taps).
+         */
         EVENTS((byte) 0x02),
+        /**
+         * Send both IMU data streams and motion events.
+         */
         ALL((byte) 0x03),
+        /**
+         * Send raw IMU data streams.
+         */
         RAW((byte) 0x04);
         private final byte mByte;
 
@@ -144,7 +156,13 @@ public class MyoCmds {
     }
 
     public enum ClassifierMode {
+        /**
+         * Disable and reset the internal state of the onboard classifier.
+         */
         DISABLED((byte) 0x00),
+        /**
+         * Send classifier events (poses and arm events).
+         */
         ENABLED((byte) 0x01);
         private final byte mByte;
 

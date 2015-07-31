@@ -3,7 +3,9 @@
  * Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
  * mHealth - Uniklinik RWTH-Aachen.
  */
-package eu.darken.myolib.processor;
+package eu.darken.myolib.processor.emg;
+
+import eu.darken.myolib.processor.BaseDataPacket;
 
 /**
  * Class to hold EMG data from one of the Myo's 8 EMG sensors.

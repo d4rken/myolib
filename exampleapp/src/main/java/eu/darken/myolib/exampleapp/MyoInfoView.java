@@ -19,10 +19,14 @@ import android.widget.TextView;
 import eu.darken.myolib.Myo;
 import eu.darken.myolib.MyoCmds;
 import eu.darken.myolib.msgs.MyoMsg;
-import eu.darken.myolib.processor.EmgData;
-import eu.darken.myolib.processor.EmgProcessor;
-import eu.darken.myolib.processor.ImuData;
-import eu.darken.myolib.processor.ImuProcessor;
+import eu.darken.myolib.processor.classifier.ClassifierEvent;
+import eu.darken.myolib.processor.classifier.ClassifierProcessor;
+import eu.darken.myolib.processor.emg.EmgData;
+import eu.darken.myolib.processor.emg.EmgProcessor;
+import eu.darken.myolib.processor.imu.ImuData;
+import eu.darken.myolib.processor.imu.ImuProcessor;
+import eu.darken.myolib.processor.imu.MotionEvent;
+import eu.darken.myolib.processor.imu.MotionProcessor;
 
 
 /**
@@ -33,11 +37,17 @@ public class MyoInfoView extends RelativeLayout implements
         Myo.FirmwareCallback,
         EmgProcessor.EmgDataListener,
         ImuProcessor.ImuDataListener,
-        Myo.ReadDeviceNameCallback {
+        ClassifierProcessor.ClassifierEventListener,
+        Myo.ReadDeviceNameCallback, MotionProcessor.MotionEventListener {
 
     private Myo mMyo;
     private TextView mTitle, mBatteryLevel, mFirmware, mSerialNumber, mAddress;
     private TextView mEmgData, mOrientationData, mGyroData, mAcclData;
+    private boolean mAttached = false;
+    private EmgProcessor mEmgProcessor;
+    private ImuProcessor mImuProcessor;
+    private ClassifierProcessor mClassifierProcessor;
+    private MotionProcessor mMotionProcessor;
 
     public MyoInfoView(Context context) {
         super(context);
@@ -70,9 +80,6 @@ public class MyoInfoView extends RelativeLayout implements
         super.onFinishInflate();
     }
 
-    private boolean mAttached = false;
-    private EmgProcessor mEmgProcessor;
-    private ImuProcessor mImuProcessor;
 
     @Override
     protected void onAttachedToWindow() {
@@ -94,11 +101,17 @@ public class MyoInfoView extends RelativeLayout implements
             }
         });
         mEmgProcessor = new EmgProcessor();
-        mEmgProcessor.addDataListener(this);
+        mEmgProcessor.addListener(this);
         mMyo.addProcessor(mEmgProcessor);
         mImuProcessor = new ImuProcessor();
-        mImuProcessor.addDataListener(this);
+        mImuProcessor.addListener(this);
         mMyo.addProcessor(mImuProcessor);
+        mClassifierProcessor = new ClassifierProcessor();
+        mClassifierProcessor.addListener(this);
+        mMyo.addProcessor(mClassifierProcessor);
+        mMotionProcessor = new MotionProcessor();
+        mMotionProcessor.addListener(this);
+        mMyo.addProcessor(mMotionProcessor);
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +152,7 @@ public class MyoInfoView extends RelativeLayout implements
         mAttached = false;
         mMyo.removeProcessor(mEmgProcessor);
         mMyo.removeProcessor(mImuProcessor);
+//        mMyo.removeProcessor(mClassifierProcessor);
         super.onDetachedFromWindow();
     }
 
@@ -205,6 +219,17 @@ public class MyoInfoView extends RelativeLayout implements
             mLastImuUpdate = System.currentTimeMillis();
         }
     }
+
+    @Override
+    public void onClassifierEvent(ClassifierEvent classifierEvent) {
+
+    }
+
+    @Override
+    public void onMotionEvent(MotionEvent motionEvent) {
+
+    }
+
 
     @Override
     public void onDeviceNameRead(Myo myo, MyoMsg msg, final String deviceName) {

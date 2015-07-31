@@ -84,7 +84,7 @@ public abstract class BaseProcessor implements Processor {
         return mDataListeners;
     }
 
-    public void addDataListener(DataListener listener) {
+    protected void addDataListener(DataListener listener) {
         if (!mDataListeners.contains(listener))
             mDataListeners.add(listener);
     }

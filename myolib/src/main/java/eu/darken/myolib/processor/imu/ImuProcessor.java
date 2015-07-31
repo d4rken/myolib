@@ -3,8 +3,10 @@
  * Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
  * mHealth - Uniklinik RWTH-Aachen.
  */
-package eu.darken.myolib.processor;
+package eu.darken.myolib.processor.imu;
 
+import eu.darken.myolib.processor.BaseDataPacket;
+import eu.darken.myolib.processor.BaseProcessor;
 import eu.darken.myolib.services.Imu;
 
 /**
@@ -33,4 +35,6 @@ public class ImuProcessor extends BaseProcessor {
         void onNewImuData(ImuData imuData);
     }
 
+    public void addListener(ImuDataListener listener) {
+    }
 }

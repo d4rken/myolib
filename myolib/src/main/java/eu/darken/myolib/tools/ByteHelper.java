@@ -20,12 +20,16 @@ public class ByteHelper {
         mByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     }
 
-    public short getUInt16() {
+    public int getUInt8() {
+        return mByteBuffer.get() & 0xFF;
+    }
+
+    public int getUInt16() {
         return mByteBuffer.getShort();
     }
 
-    public short[] getUInt16Array(int length) {
-        short[] result = new short[length];
+    public int[] getUInt16Array(int length) {
+        int[] result = new int[length];
         for (int i = 0; i < length; i++)
             result[i] = mByteBuffer.getShort();
         return result;
