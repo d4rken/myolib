@@ -7,35 +7,34 @@
 package eu.darken.myolib.processor.imu;
 
 import eu.darken.myolib.processor.BaseDataPacket;
+import eu.darken.myolib.processor.DataPacket;
 import eu.darken.myolib.tools.ByteHelper;
 
 /**
  * Class representing data from the Myo's IMU sensors.
  */
-public class ImuData {
+public class ImuData extends DataPacket {
     private static final double MYOHW_ORIENTATION_SCALE = 16384.0f; ///< See myohw_imu_data_t::orientation
     private static final double MYOHW_ACCELEROMETER_SCALE = 2048.0f; ///< See myohw_imu_data_t::accelerometer
     private static final double MYOHW_ACCEMYOHW_GYROSCOPE_SCALELEROMETER_SCALE = 16.0f; ///< See myohw_imu_data_t::gyroscope
     private final double[] mOrientationData;
     private final double[] mAccelerometerData;
     private final double[] mGyroData;
-    private final long mTimestamp;
-    private final String mDeviceAddress;
 
-    public ImuData(String deviceAddress, long timestamp, double[] orientationData, double[] accelerometerData, double[] gyroData) {
-        mDeviceAddress = deviceAddress;
-        mTimestamp = timestamp;
-        mOrientationData = orientationData;
-        mAccelerometerData = accelerometerData;
-        mGyroData = gyroData;
-    }
+    public ImuData(BaseDataPacket packet) {
+        super(packet.getDeviceAddress(), packet.getTimeStamp());
+        ByteHelper byteHelper = new ByteHelper(packet.getData());
+        mOrientationData = new double[4];
+        for (int i = 0; i < 4; i++)
+            mOrientationData[i] = byteHelper.getUInt16() / MYOHW_ORIENTATION_SCALE;
 
-    public String getDeviceAddress() {
-        return mDeviceAddress;
-    }
+        mAccelerometerData = new double[3];
+        for (int i = 0; i < 3; i++)
+            mAccelerometerData[i] = byteHelper.getUInt16() / MYOHW_ACCELEROMETER_SCALE;
 
-    public long getTimestamp() {
-        return mTimestamp;
+        mGyroData = new double[3];
+        for (int i = 0; i < 3; i++)
+            mGyroData[i] = byteHelper.getUInt16() / MYOHW_ACCEMYOHW_GYROSCOPE_SCALELEROMETER_SCALE;
     }
 
     /**
@@ -75,19 +74,4 @@ public class ImuData {
         return builder.toString();
     }
 
-    public static ImuData from(BaseDataPacket packet) {
-        ByteHelper byteHelper = new ByteHelper(packet.getData());
-        double[] orientationData = new double[4];
-        for (int i = 0; i < 4; i++)
-            orientationData[i] = byteHelper.getUInt16() / MYOHW_ORIENTATION_SCALE;
-
-        double[] accelerometerData = new double[3];
-        for (int i = 0; i < 3; i++)
-            accelerometerData[i] = byteHelper.getUInt16() / MYOHW_ACCELEROMETER_SCALE;
-
-        double[] gyroData = new double[3];
-        for (int i = 0; i < 3; i++)
-            gyroData[i] = byteHelper.getUInt16() / MYOHW_ACCEMYOHW_GYROSCOPE_SCALELEROMETER_SCALE;
-        return new ImuData(packet.getDeviceAddress(), packet.getTimeStamp(), orientationData, accelerometerData, gyroData);
-    }
 }

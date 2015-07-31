@@ -27,7 +27,7 @@ public class MotionProcessor extends BaseProcessor {
         MotionEvent event = null;
         int typeValue = byteHelper.getUInt8();
         if (typeValue == MotionEvent.Type.TAP.getValue()) {
-            TapMotionEvent _event = new TapMotionEvent();
+            TapMotionEvent _event = new TapMotionEvent(packet);
             // TODO possible values are unknown
             int tapDirectionValue = byteHelper.getUInt8();
             int tapCountValue = byteHelper.getUInt8();

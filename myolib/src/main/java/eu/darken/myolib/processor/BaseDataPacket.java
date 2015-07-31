@@ -19,33 +19,20 @@ import eu.darken.myolib.services.MyoService;
  * If you create a custom processor by implementing {@link Processor},
  * this is what you will get as data.
  */
-public class BaseDataPacket {
-    private final String mDeviceAddress;
+public class BaseDataPacket extends DataPacket {
     private final UUID mServiceUUID;
     private final UUID mCharacteristicUUID;
     private final byte[] mData;
-
-    private final long mTimeStamp;
 
     public BaseDataPacket(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
         this(gatt.getDevice().getAddress(), characteristic.getService().getUuid(), characteristic.getUuid(), characteristic.getValue());
     }
 
     public BaseDataPacket(String deviceAddress, UUID serviceUUID, UUID characteristicUUID, byte[] data) {
-        mDeviceAddress = deviceAddress;
+        super(deviceAddress, System.currentTimeMillis());
         mServiceUUID = serviceUUID;
         mCharacteristicUUID = characteristicUUID;
         mData = data;
-        mTimeStamp = System.currentTimeMillis();
-    }
-
-    /**
-     * The address of the Myo device the data came from.
-     *
-     * @return The hex bluetooth address of a Myo.
-     */
-    public String getDeviceAddress() {
-        return mDeviceAddress;
     }
 
     /**
@@ -75,13 +62,4 @@ public class BaseDataPacket {
         return mData;
     }
 
-    /**
-     * A timestamp set when this class was created, which is shortly after {@link android.bluetooth.BluetoothGattCallback#onCharacteristicChanged(BluetoothGatt, BluetoothGattCharacteristic)} is triggered.
-     * {@link System#currentTimeMillis()} is used.
-     *
-     * @return timestamp in milliseconds
-     */
-    public long getTimeStamp() {
-        return mTimeStamp;
-    }
 }

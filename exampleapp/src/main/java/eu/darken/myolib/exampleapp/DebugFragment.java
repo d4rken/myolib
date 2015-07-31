@@ -20,6 +20,8 @@ import eu.darken.myolib.BaseMyo;
 import eu.darken.myolib.Myo;
 import eu.darken.myolib.MyoCmds;
 import eu.darken.myolib.MyoConnector;
+import eu.darken.myolib.MyoInfo;
+import eu.darken.myolib.msgs.MyoMsg;
 import eu.darken.myolib.tools.Logy;
 
 /**
@@ -74,6 +76,12 @@ public class DebugFragment extends Fragment implements BaseMyo.ConnectionListene
                             myo.writeSleepMode(MyoCmds.SleepMode.NEVER, null);
                             myo.writeMode(MyoCmds.EmgMode.NONE, MyoCmds.ImuMode.EVENTS, MyoCmds.ClassifierMode.ENABLED, null);
                             myo.writeUnlock(MyoCmds.UnlockType.HOLD, null);
+                            myo.readInfo(new Myo.ReadMyoInfoCallback() {
+                                @Override
+                                public void onReadMyoInfo(Myo myo, MyoMsg msg, MyoInfo myoInfo) {
+
+                                }
+                            });
                             infoView.setMyo(myo);
                             mContainer.addView(infoView);
                         }

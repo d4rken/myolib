@@ -20,6 +20,10 @@ public class ByteHelper {
         mByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     }
 
+    public byte getByte() {
+        return mByteBuffer.get();
+    }
+
     public int getUInt8() {
         return mByteBuffer.get() & 0xFF;
     }
@@ -39,5 +43,13 @@ public class ByteHelper {
         long low = mByteBuffer.getLong();
         long high = mByteBuffer.getLong();
         return new UUID(high, low);
+    }
+
+    public boolean hasRemaining() {
+        return mByteBuffer.hasRemaining();
+    }
+
+    public int getRemaining() {
+        return mByteBuffer.remaining();
     }
 }

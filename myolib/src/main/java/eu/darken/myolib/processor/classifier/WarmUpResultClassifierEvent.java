@@ -1,5 +1,8 @@
 package eu.darken.myolib.processor.classifier;
 
+import eu.darken.myolib.processor.BaseDataPacket;
+import eu.darken.myolib.tools.ByteHelper;
+
 public class WarmUpResultClassifierEvent extends ClassifierEvent {
     /**
      * Possible warm-up results for Myo.
@@ -19,8 +22,20 @@ public class WarmUpResultClassifierEvent extends ClassifierEvent {
 
     private WarmUpResult mWarmUpResult;
 
-    public WarmUpResultClassifierEvent() {
-        super(Type.WARM_UP_RESULT);
+    public WarmUpResultClassifierEvent(BaseDataPacket packet) {
+        super(packet, Type.WARM_UP_RESULT);
+        ByteHelper byteHelper = new ByteHelper(packet.getData());
+        int typeValue = byteHelper.getUInt8();
+        if (getType().getValue() != typeValue)
+            throw new RuntimeException("Incompatible BaseDataPacket:" + typeValue);
+
+        int warmUpResultValue = byteHelper.getUInt8();
+        for (WarmUpResultClassifierEvent.WarmUpResult warmUpResult : WarmUpResultClassifierEvent.WarmUpResult.values()) {
+            if (warmUpResult.getValue() == warmUpResultValue) {
+                mWarmUpResult = warmUpResult;
+                break;
+            }
+        }
     }
 
     public WarmUpResult getWarmUpResult() {

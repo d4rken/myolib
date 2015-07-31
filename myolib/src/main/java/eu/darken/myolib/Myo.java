@@ -29,6 +29,29 @@ public class Myo extends BaseMyo {
         super(context, device);
     }
 
+    public interface ReadMyoInfoCallback {
+        void onReadMyoInfo(Myo myo, MyoMsg msg, MyoInfo myoInfo);
+    }
+
+    private MyoInfo mMyoInfo;
+
+    public MyoInfo getMyoInfo() {
+        return mMyoInfo;
+    }
+
+    public void readInfo(final ReadMyoInfoCallback callback) {
+        MyoMsg msg = new ReadMsg(Control.MYOINFO, new MyoMsg.Callback() {
+            @Override
+            public void onResult(MyoMsg msg) {
+                if (msg.getState() == MyoMsg.State.SUCCESS)
+                    mMyoInfo = new MyoInfo((ReadMsg) msg);
+                if (callback != null)
+                    callback.onReadMyoInfo(Myo.this, msg, mMyoInfo);
+            }
+        });
+        submit(msg);
+    }
+
     /**
      * Sets a new device name, if successful {@link #getDeviceName()} will also be updated.
      *

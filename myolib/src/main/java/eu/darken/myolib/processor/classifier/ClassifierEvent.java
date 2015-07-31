@@ -1,9 +1,11 @@
 package eu.darken.myolib.processor.classifier;
 
+import eu.darken.myolib.processor.DataPacket;
+
 /**
  * https://github.com/thalmiclabs/myo-bluetooth/blob/master/myohw.h#L345
  */
-public class ClassifierEvent {
+public class ClassifierEvent extends DataPacket {
     /**
      * Types of classifier events.
      */
@@ -22,8 +24,8 @@ public class ClassifierEvent {
 
     private final Type mType;
 
-
-    public ClassifierEvent(Type type) {
+    protected ClassifierEvent(DataPacket packet, Type type) {
+        super(packet.getDeviceAddress(), packet.getTimeStamp());
         mType = type;
     }
 

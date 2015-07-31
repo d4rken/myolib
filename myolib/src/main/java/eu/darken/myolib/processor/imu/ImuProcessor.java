@@ -22,7 +22,7 @@ public class ImuProcessor extends BaseProcessor {
 
     @Override
     protected void doProcess(BaseDataPacket packet) {
-        ImuData imuData = ImuData.from(packet);
+        ImuData imuData = new ImuData(packet);
 
         for (DataListener listener : getDataListeners()) {
             ImuDataListener imuListener = (ImuDataListener) listener;

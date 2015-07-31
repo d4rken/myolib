@@ -1,7 +1,9 @@
 package eu.darken.myolib.processor.imu;
 
 
-public class MotionEvent {
+import eu.darken.myolib.processor.DataPacket;
+
+public class MotionEvent extends DataPacket {
     /**
      * Types of motion events.
      */
@@ -20,9 +22,11 @@ public class MotionEvent {
 
     private final Type mType;
 
-    public MotionEvent(Type type) {
+    public MotionEvent(DataPacket packet, Type type) {
+        super(packet);
         mType = type;
     }
+
 
     public Type getType() {
         return mType;

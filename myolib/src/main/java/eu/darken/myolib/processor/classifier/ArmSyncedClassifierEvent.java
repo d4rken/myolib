@@ -1,5 +1,8 @@
 package eu.darken.myolib.processor.classifier;
 
+import eu.darken.myolib.processor.BaseDataPacket;
+import eu.darken.myolib.tools.ByteHelper;
+
 public class ArmSyncedClassifierEvent extends ClassifierEvent {
     /**
      * Possible warm-up states for Myo.
@@ -55,32 +58,56 @@ public class ArmSyncedClassifierEvent extends ClassifierEvent {
     }
 
     private Direction mDirection = Direction.UNKNOWN;
+    private float mRotation;
 
-    public ArmSyncedClassifierEvent() {
-        super(Type.ARM_SYNCED);
+    public ArmSyncedClassifierEvent(BaseDataPacket packet) {
+        super(packet, Type.ARM_SYNCED);
+        ByteHelper byteHelper = new ByteHelper(packet.getData());
+        int typeValue = byteHelper.getUInt8();
+        if (getType().getValue() != typeValue)
+            throw new RuntimeException("Incompatible BaseDataPacket:" + typeValue);
+
+        int armValue = byteHelper.getUInt8();
+        for (ArmSyncedClassifierEvent.Arm arm : ArmSyncedClassifierEvent.Arm.values()) {
+            if (arm.getValue() == armValue) {
+                mArm = arm;
+                break;
+            }
+        }
+        int directionValue = byteHelper.getUInt8();
+        for (ArmSyncedClassifierEvent.Direction direction : ArmSyncedClassifierEvent.Direction.values()) {
+            if (direction.getValue() == directionValue) {
+                mDirection = direction;
+                break;
+            }
+        }
+        if (mDirection == null)
+            mDirection = Direction.UNKNOWN;
+        // FIXME what is the correct scale for this?
+        // https://github.com/logotype/myodaemon/blob/master/native-osx/libs/myo.framework/Versions/A/Headers/cxx/impl/Hub_impl.hpp#L144
+        if (packet.getData().length > 3) {
+            int warmUpStateValue = byteHelper.getUInt8();
+            for (ArmSyncedClassifierEvent.WarmUpState warmUpState : ArmSyncedClassifierEvent.WarmUpState.values()) {
+                if (warmUpState.getValue() == warmUpStateValue) {
+                    mWarmUpState = warmUpState;
+                    break;
+                }
+            }
+            mRotation = byteHelper.getUInt16() / 16384.0f;
+        }
     }
 
     public WarmUpState getWarmUpState() {
         return mWarmUpState;
     }
 
-    public void setWarmUpState(WarmUpState warmUpState) {
-        mWarmUpState = warmUpState;
-    }
 
     public Arm getArm() {
         return mArm;
-    }
-
-    public void setArm(Arm arm) {
-        mArm = arm;
     }
 
     public Direction getDirection() {
         return mDirection;
     }
 
-    public void setDirection(Direction direction) {
-        mDirection = direction;
-    }
 }
