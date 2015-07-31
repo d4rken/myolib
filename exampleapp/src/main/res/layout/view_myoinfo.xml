@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015.
+  ~ Author:
+  ~ Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
+  ~ Department:
+  ~ mHealth - Uniklinik RWTH-Aachen.
+  -->
+
+<eu.darken.myolib.exampleapp.MyoInfoView xmlns:android="http://schemas.android.com/apk/res/android"
+                                         xmlns:tools="http://schemas.android.com/tools"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                         android:layout_margin="16dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Loading"
+        tools:text="Myo1"/>
+
+    <TextView
+        android:id="@+id/tv_batterylevel"
+        style="@style/TextAppearance.AppCompat.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_title"
+        android:layout_alignParentRight="true"
+        tools:text="Battery 00%"/>
+
+    <TextView
+        android:id="@+id/tv_firmware"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tv_title"
+        tools:text="Firmware: v0.0.0 - 0"/>
+
+    <TextView
+        android:id="@+id/tv_serialnumber"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_title"
+        tools:text="Serial Number"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_firmware"
+        tools:text="AA:AA:AA:AA:AA:AA"/>
+
+    <TextView
+        android:id="@+id/tv_emg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_address"
+        tools:text="EMG data"/>
+
+    <TextView
+        android:id="@+id/tv_orientation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_emg"
+        tools:text="Orientation data"/>
+
+    <TextView
+        android:id="@+id/tv_accl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_orientation"
+        tools:text="Accl data"/>
+
+    <TextView
+        android:id="@+id/tv_gyro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_accl"
+        tools:text="Gyro data"/>
+</eu.darken.myolib.exampleapp.MyoInfoView>
