@@ -9,7 +9,7 @@ public class MyoInfo {
     /**
      * Unique serial number of this Myo.
      */
-    private final String mSerialNumber;
+    private final int[] mSerialNumber;
     /**
      * Pose that should be interpreted as the unlock pose.
      */
@@ -67,7 +67,10 @@ public class MyoInfo {
 
     public MyoInfo(ReadMsg msg) {
         ByteHelper byteHelper = new ByteHelper(msg.getValue());
-        mSerialNumber = String.format("%d%d%d%d%d%d", byteHelper.getUInt8(), byteHelper.getUInt8(), byteHelper.getUInt8(), byteHelper.getUInt8(), byteHelper.getUInt8(), byteHelper.getUInt8());
+        int[] serialNumberValue = new int[6];
+        for (int i = 0; i < 6; i++)
+            serialNumberValue[i] = byteHelper.getUInt8();
+        mSerialNumber = serialNumberValue;
         int unlockPoseValue = byteHelper.getUInt16();
         for (PoseClassifierEvent.Pose pose : PoseClassifierEvent.Pose.values()) {
             if (pose.getValue() == unlockPoseValue) {
@@ -112,7 +115,7 @@ public class MyoInfo {
         }
     }
 
-    public String getSerialNumber() {
+    public int[] getSerialNumber() {
         return mSerialNumber;
     }
 
