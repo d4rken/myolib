@@ -1,8 +1,9 @@
 # darken's Myo lib
-This is an unofficial Android SDK for the My.ohttps://mhealth.imib.rwth-aachen.de
+This is an unofficial Android SDK for the Myo.
 
+It was created for a research project at the [mHealth - Uniklinik RWTH Aachen](https://mhealth.imib.rwth-aachen.de) deparment. The projected required receiving sensor data (Gyro, Accl., EMG) from multiple Myo devices simultaneously, which is currently not possible through the official Android SDK for Myo from Thalmic Labs.
 
-Contributions are welcome. if you submit pull-requests please adhere to the projects current coding style.
+Contributions are welcome. If you submit pull-requests please adhere to the projects current coding style.
 If you are using this library, i would love mention your project here, feel free to contact me.
 
 # Quickstart
