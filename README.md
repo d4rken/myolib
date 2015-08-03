@@ -1,5 +1,9 @@
-# myolib
-darken's Myo lib is an opensource Android library to communicate with Myo devices
+# darken's Myo lib
+This is an unofficial Android SDK for the My.ohttps://mhealth.imib.rwth-aachen.de
+
+
+Contributions are welcome. if you submit pull-requests please adhere to the projects current coding style.
+If you are using this library, i would love mention your project here, feel free to contact me.
 
 # Quickstart
 ## Utilizing callbacks
@@ -70,4 +74,9 @@ WriteMsg writeMsg = new WriteMsg(
 );
 baseMyo.submit(writeMsg);
 ```
+
 # License
+This library is licensed under Apache 2.0, see [LICENSE](https://github.com/d4rken/myolib/blob/master/LICENSE)
+
+If you use "darken's Myo lib" for your publication, please cite the following publication:
+ * Kutafina E, Laukamp D, Jonas SM. Wearable Sensors in Medical Education: Supporting Hand Hygiene Training with a Forearm EMG. Stud Health Technol Inform. 2015;211:286-91.
