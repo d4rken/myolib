@@ -1,5 +1,5 @@
 # myolib
-darken's Myo lib is an opensource Android library to communicate with Myo devices
+Android Myo library by darken is an opensource Android library to communicate with Myo devices
 
 # Quickstart
 ## Utilizing callbacks

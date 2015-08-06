@@ -1,5 +1,5 @@
 /*
- * darken's Myo lib
+ * Android Myo library by darken
  * Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
  * mHealth - Uniklinik RWTH-Aachen.
  */

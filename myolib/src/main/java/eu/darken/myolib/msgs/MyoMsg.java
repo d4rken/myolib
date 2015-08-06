@@ -1,5 +1,5 @@
 /*
- * darken's Myo lib
+ * Android Myo library by darken
  * Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
  * mHealth - Uniklinik RWTH-Aachen.
  */
@@ -80,9 +80,6 @@ public class MyoMsg {
      * Convenience constructor for creating a characteristic only message.<br>
      * See {@link #MyoMsg(UUID, UUID, UUID, Callback)}
      *
-     * @param serviceUUID
-     * @param characteristicUUID
-     * @param callback
      */
     public MyoMsg(@NonNull UUID serviceUUID, @NonNull UUID characteristicUUID, @Nullable Callback callback) {
         mServiceUUID = serviceUUID;
@@ -98,7 +95,6 @@ public class MyoMsg {
     /**
      * The current state of this message.
      *
-     * @return
      */
     public State getState() {
         return mState;
@@ -107,7 +103,6 @@ public class MyoMsg {
     /**
      * This will be used by {@link eu.darken.myolib.BaseMyo}. Don't call it yourself.
      *
-     * @param state
      */
     public void setState(State state) {
         mState = state;
@@ -128,7 +123,6 @@ public class MyoMsg {
      * Set by {@link eu.darken.myolib.BaseMyo} after a message is send, shortly before the callback is triggered.
      * Don't set this yourself.
      *
-     * @param gattStatus
      */
     public void setGattStatus(Integer gattStatus) {
         mGattStatus = gattStatus;
@@ -175,7 +169,6 @@ public class MyoMsg {
      * An identifier string for this message. This is not unique.
      * Two messages can have the identifier but as we are transmitting messages in sequence and not in parallel, it is not an issue.
      *
-     * @return
      */
     public String getIdentifier() {
         StringBuilder builder = new StringBuilder();
@@ -194,9 +187,6 @@ public class MyoMsg {
     /**
      * A convenience method to generate the identifier based on a {@link BluetoothGattCharacteristic} object.<br>
      * Also see {@link #getIdentifier()}.
-     *
-     * @param characteristic
-     * @return
      */
     public static String toIdentifier(BluetoothGattCharacteristic characteristic) {
         StringBuilder builder = new StringBuilder();
@@ -207,9 +197,6 @@ public class MyoMsg {
 
     /**
      * See {@link #toIdentifier(BluetoothGattCharacteristic)}
-     *
-     * @param descriptor
-     * @return
      */
     public static String toIdentifier(BluetoothGattDescriptor descriptor) {
         StringBuilder builder = new StringBuilder();

@@ -1,5 +1,5 @@
 /*
- * darken's Myo lib
+ * Android Myo library by darken
  * Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
  * mHealth - Uniklinik RWTH-Aachen.
  */
@@ -83,7 +83,6 @@ public class Myo extends BaseMyo {
      * Returns a cached devicename, call {@link #readDeviceName(ReadDeviceNameCallback)} to update it.<br/>
      * Is also updated on successfull {@link #writeDeviceName(String, MyoCommandCallback)} calls.
      *
-     * @return
      */
     public String getDeviceName() {
         return mDeviceName;
@@ -207,9 +206,9 @@ public class Myo extends BaseMyo {
     /**
      * Sets the Myo's sensor modes. It's not possible to set these individually.
      *
-     * @param emgMode
-     * @param imuMode
-     * @param classifierMode
+     * @param emgMode emgMode
+     * @param imuMode imuMode
+     * @param classifierMode classifier on/off
      * @param callback       optional
      */
     public void writeMode(final MyoCmds.EmgMode emgMode, final MyoCmds.ImuMode imuMode, final MyoCmds.ClassifierMode classifierMode, @Nullable final MyoCommandCallback callback) {
@@ -278,10 +277,6 @@ public class Myo extends BaseMyo {
         submit(writeMsg);
     }
 
-    /**
-     * @param vibrateType
-     * @param callback
-     */
     public void writeVibrate(MyoCmds.VibrateType vibrateType, @Nullable final MyoCommandCallback callback) {
         byte[] cmd = MyoCmds.buildVibrateCmd(vibrateType);
         MyoMsg writeMsg = new WriteMsg(Control.COMMAND, cmd, new MyoMsg.Callback() {
@@ -297,7 +292,7 @@ public class Myo extends BaseMyo {
     }
 
     /**
-     * @param unlockType
+     * @param unlockType LOCK, TIMED or HOLD
      * @param callback   optional
      */
     public void writeUnlock(final MyoCmds.UnlockType unlockType, @Nullable final MyoCommandCallback callback) {

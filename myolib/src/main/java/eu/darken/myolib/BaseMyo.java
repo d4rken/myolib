@@ -1,5 +1,5 @@
 /*
- * darken's Myo lib
+ * Android Myo library by darken
  * Matthias Urhahn (matthias.urhahn@rwth-aachen.de)
  * mHealth - Uniklinik RWTH-Aachen.
  */
@@ -342,7 +342,7 @@ public class BaseMyo extends BluetoothGattCallback {
      * Use {@link #getConnectionState()} for that.<br/>
      * The dispatcher can be running, but the Myo device temporarily disconnected.
      *
-     * @return
+     * @return true if the dispatcher is running
      */
     public boolean isRunning() {
         return mRunning;
@@ -537,7 +537,7 @@ public class BaseMyo extends BluetoothGattCallback {
     }
 
     /**
-     * @param processor
+     * Adds a Processor object to this Myo, make sure it is unique.
      */
     public void addProcessor(Processor processor) {
         for (UUID subscriptionTarget : processor.getSubscriptions()) {
