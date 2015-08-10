@@ -87,3 +87,6 @@ This library is licensed under Apache 2.0, see [LICENSE](https://github.com/d4rk
 
 If you use "darken's Myo lib" for your publication, please cite the following publication:
  * Kutafina E, Laukamp D, Jonas SM. Wearable Sensors in Medical Education: Supporting Hand Hygiene Training with a Forearm EMG. Stud Health Technol Inform. 2015;211:286-91.
+
+# Example app
+![](https://github.com/d4rken/myolib/tree/master/exampleapp/exampleapp.png =250x)
