@@ -27,7 +27,7 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.1'
-    compile 'eu.darken.myolib:myolib:+'
+    compile 'eu.darken.myolib:myolib:0.0.2'
     // Change to use local library
     // compile project(':myolib')
 }
