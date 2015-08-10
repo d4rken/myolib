@@ -6,7 +6,7 @@ Contributions are welcome. If you submit pull-requests please adhere to the proj
 If you are using this library, i would love mention your project here, feel free to contact me.
 
 # Setup
-Include this in your apps build.grade file:
+Include this in your apps build.gradle file:
 ```java
 compile 'eu.darken.myolib:myolib:0.0.2'
 ```
