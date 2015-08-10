@@ -36,5 +36,6 @@ public class ImuProcessor extends BaseProcessor {
     }
 
     public void addListener(ImuDataListener listener) {
+        super.addDataListener(listener);
     }
 }

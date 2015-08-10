@@ -47,5 +47,6 @@ public class EmgProcessor extends BaseProcessor {
     }
 
     public void addListener(EmgDataListener listener) {
+        super.addDataListener(listener);
     }
 }
