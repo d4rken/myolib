@@ -89,4 +89,4 @@ If you use "darken's Myo lib" for your publication, please cite the following pu
  * Kutafina E, Laukamp D, Jonas SM. Wearable Sensors in Medical Education: Supporting Hand Hygiene Training with a Forearm EMG. Stud Health Technol Inform. 2015;211:286-91.
 
 # Example app
-![](https://github.com/d4rken/myolib/tree/master/exampleapp/exampleapp.png =250x)
+<img src="https://raw.githubusercontent.com/d4rken/myolib/master/exampleapp/exampleapp.png" height="500">
