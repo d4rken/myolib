@@ -152,7 +152,7 @@ public class MyoInfoView extends RelativeLayout implements
         mAttached = false;
         mMyo.removeProcessor(mEmgProcessor);
         mMyo.removeProcessor(mImuProcessor);
-//        mMyo.removeProcessor(mClassifierProcessor);
+        mMyo.removeProcessor(mClassifierProcessor);
         super.onDetachedFromWindow();
     }
 

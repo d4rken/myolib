@@ -74,14 +74,8 @@ public class DebugFragment extends Fragment implements BaseMyo.ConnectionListene
                             myo.connect();
                             myo.setConnectionSpeed(BaseMyo.ConnectionSpeed.HIGH);
                             myo.writeSleepMode(MyoCmds.SleepMode.NEVER, null);
-                            myo.writeMode(MyoCmds.EmgMode.NONE, MyoCmds.ImuMode.EVENTS, MyoCmds.ClassifierMode.ENABLED, null);
+                            myo.writeMode(MyoCmds.EmgMode.FILTERED, MyoCmds.ImuMode.RAW, MyoCmds.ClassifierMode.DISABLED, null);
                             myo.writeUnlock(MyoCmds.UnlockType.HOLD, null);
-                            myo.readInfo(new Myo.ReadMyoInfoCallback() {
-                                @Override
-                                public void onReadMyoInfo(Myo myo, MyoMsg msg, MyoInfo myoInfo) {
-
-                                }
-                            });
                             infoView.setMyo(myo);
                             mContainer.addView(infoView);
                         }
