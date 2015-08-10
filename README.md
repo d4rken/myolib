@@ -1,11 +1,17 @@
-Android Myo library by darken is an opensource Android library to communicate with Myo devices
+Android Myo library by darken is an open source Android library to communicate with Myo devices
 
-It was created for a research project at the [mHealth - Uniklinik RWTH Aachen](https://mhealth.imib.rwth-aachen.de) deparment. The projected required receiving sensor data (Gyro, Accl., EMG) from multiple Myo devices simultaneously, which is currently not possible through the official Android SDK for Myo from Thalmic Labs.
+It was created for a research project at the [mHealth - Uniklinik RWTH Aachen](https://mhealth.imib.rwth-aachen.de) deparment. The projected required receiving sensor data (Gyro, Accl., EMG) from multiple Myo devices simultaneously, which was not possible at that time (August 2015) through the official Android SDK for Myo from Thalmic Labs.
 
 Contributions are welcome. If you submit pull-requests please adhere to the projects current coding style.
 If you are using this library, i would love mention your project here, feel free to contact me.
 
-# Quickstart
+# Setup
+Include this in your apps build.grade file:
+```java
+compile 'eu.darken.myolib:myolib:0.0.1'
+```
+
+# Examples
 ## Utilizing callbacks
 ```java
 MyoConnector connector = new MyoConnector(getContext());
