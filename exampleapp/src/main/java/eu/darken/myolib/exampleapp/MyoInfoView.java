@@ -195,7 +195,7 @@ public class MyoInfoView extends RelativeLayout implements
                 getHandler().post(new Runnable() {
                     @Override
                     public void run() {
-                        mEmgData.setText("Emg: " + emgData.toString() + "\n" + (mEmgProcessor.getPacketCounter() * 2) + " EMG/s");
+                        mEmgData.setText("Emg:\n" + emgData.toString() + "\n" + (mEmgProcessor.getPacketCounter() * 2) + " EMG/s");
                     }
                 });
             mLastEmgUpdate = System.currentTimeMillis();

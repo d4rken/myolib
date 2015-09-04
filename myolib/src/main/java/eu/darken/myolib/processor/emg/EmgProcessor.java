@@ -25,14 +25,12 @@ public class EmgProcessor extends BaseProcessor {
     }
 
     protected void doProcess(BaseDataPacket packet) {
-        int[] data1 = new int[8];
-        for (int i = 0; i < 8; i++)
-            data1[i] = packet.getData()[i] & 0xFF;
+        byte[] data1 = new byte[8];
+        System.arraycopy(packet.getData(), 0, data1, 0, 8);
         EmgData emgData1 = new EmgData(packet.getDeviceAddress(), packet.getTimeStamp(), data1);
 
-        int[] data2 = new int[8];
-        for (int i = 8; i < 16; i++)
-            data2[i - 8] = packet.getData()[i] & 0xFF;
+        byte[] data2 = new byte[8];
+        System.arraycopy(packet.getData(), 8, data2, 0, 8);
         EmgData emgData2 = new EmgData(packet.getDeviceAddress(), packet.getTimeStamp() + 5, data2);
 
         for (DataListener listener : getDataListeners()) {

@@ -11,11 +11,11 @@ import eu.darken.myolib.processor.BaseDataPacket;
  * Class to hold EMG data from one of the Myo's 8 EMG sensors.
  */
 public class EmgData {
-    private final int[] mData;
+    private final byte[] mData;
     private final long mTimestamp;
     private final String mDeviceAddress;
 
-    public EmgData(String deviceAddress, long timestamp, int[] data) {
+    public EmgData(String deviceAddress, long timestamp, byte[] data) {
         mDeviceAddress = deviceAddress;
         mTimestamp = timestamp;
         mData = data;
@@ -26,10 +26,10 @@ public class EmgData {
     }
 
     /**
-     * @return Array of int values ranging from 0 to 255.
-     * @see <a href="https://github.com/thalmiclabs/myo-bluetooth/blob/master/myohw.h">Myo protocol specification</a>
+     * @return Array of byte values ranging from -128 to 127.
+     * @see <a href="https://github.com/thalmiclabs/myo-bluetooth/blob/master/myohw.h#L371">Myo protocol specification</a>
      */
-    public int[] getData() {
+    public byte[] getData() {
         return mData;
     }
 
@@ -37,7 +37,7 @@ public class EmgData {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (int b : mData)
-            builder.append(String.format("%03d", b)).append(" ");
+            builder.append(String.format("%+04d", b)).append(" ");
         return builder.toString();
     }
 
