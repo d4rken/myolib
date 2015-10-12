@@ -14,7 +14,7 @@ public class Imu {
     protected static final UUID SERVICE_ID = UUID.fromString(String.format(MyoService.MYO_SERVICE_BASE_UUID, 0x0002));
 
     protected static final UUID IMUDATA_CHARACTERISTIC = UUID.fromString(String.format(MyoService.MYO_SERVICE_BASE_UUID, 0x0402));
-    protected static final UUID MOTIONEVENT_CHARACTERISTIC = UUID.fromString(String.format(MyoService.MYO_SERVICE_BASE_UUID, 0x0a02));
+    protected static final UUID MOTIONEVENT_CHARACTERISTIC = UUID.fromString(String.format(MyoService.MYO_SERVICE_BASE_UUID, 0x0502));
 
     public static final MyoService SERVICE = new MyoService(SERVICE_ID);
 
