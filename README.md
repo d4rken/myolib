@@ -8,7 +8,7 @@ If you are using this library, i would love mention your project here, feel free
 # Setup
 Include this in your apps build.gradle file:
 ```java
-compile 'eu.darken.myolib:myolib:0.0.3'
+compile 'eu.darken.myolib:myolib:0.0.4'
 ```
 [ ![Download](https://api.bintray.com/packages/darken/maven/myolib/images/download.svg) ](https://bintray.com/darken/maven/myolib/_latestVersion)
 
