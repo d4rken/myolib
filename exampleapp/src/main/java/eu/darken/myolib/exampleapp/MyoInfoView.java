@@ -68,15 +68,15 @@ public class MyoInfoView extends RelativeLayout implements
 
     @Override
     protected void onFinishInflate() {
-        mTitle = (TextView) findViewById(R.id.tv_title);
-        mBatteryLevel = (TextView) findViewById(R.id.tv_batterylevel);
-        mFirmware = (TextView) findViewById(R.id.tv_firmware);
-        mSerialNumber = (TextView) findViewById(R.id.tv_serialnumber);
-        mAddress = (TextView) findViewById(R.id.tv_address);
-        mEmgData = (TextView) findViewById(R.id.tv_emg);
-        mGyroData = (TextView) findViewById(R.id.tv_gyro);
-        mAcclData = (TextView) findViewById(R.id.tv_accl);
-        mOrientationData = (TextView) findViewById(R.id.tv_orientation);
+        mTitle = findViewById(R.id.tv_title);
+        mBatteryLevel = findViewById(R.id.tv_batterylevel);
+        mFirmware = findViewById(R.id.tv_firmware);
+        mSerialNumber = findViewById(R.id.tv_serialnumber);
+        mAddress = findViewById(R.id.tv_address);
+        mEmgData = findViewById(R.id.tv_emg);
+        mGyroData = findViewById(R.id.tv_gyro);
+        mAcclData = findViewById(R.id.tv_accl);
+        mOrientationData = findViewById(R.id.tv_orientation);
         super.onFinishInflate();
     }
 

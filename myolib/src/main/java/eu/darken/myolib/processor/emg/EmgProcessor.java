@@ -10,7 +10,7 @@ import eu.darken.myolib.processor.BaseProcessor;
 import eu.darken.myolib.services.Emg;
 
 /**
- * Creates {@link EmgData} objects from {@link BaseDataPacket} objects.<br/>
+ * Creates {@link EmgData} objects from {@link BaseDataPacket} objects.<br>
  * More specifically, two for each.
  */
 public class EmgProcessor extends BaseProcessor {

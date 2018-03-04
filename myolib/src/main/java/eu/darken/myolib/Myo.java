@@ -80,7 +80,7 @@ public class Myo extends BaseMyo {
     private String mDeviceName;
 
     /**
-     * Returns a cached devicename, call {@link #readDeviceName(ReadDeviceNameCallback)} to update it.<br/>
+     * Returns a cached devicename, call {@link #readDeviceName(ReadDeviceNameCallback)} to update it.<br>
      * Is also updated on successfull {@link #writeDeviceName(String, MyoCommandCallback)} calls.
      *
      */
@@ -89,7 +89,7 @@ public class Myo extends BaseMyo {
     }
 
     /**
-     * Reads the current device name through from the device.<br/>
+     * Reads the current device name through from the device.<br>
      * While there also is {@link BluetoothDevice#getName()} it often only returns a short version of the name.
      *
      * @param callback optional

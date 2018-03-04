@@ -20,7 +20,7 @@ import eu.darken.myolib.services.MyoService;
 /**
  * The base class for all communication done with a Myo.
  * Intended to be used with {@link eu.darken.myolib.BaseMyo#submit(MyoMsg)}.
- * <br/>
+ * <br>
  * Normally you would want to use one of its subclasses:
  * {@link WriteMsg},{@link ReadMsg}
  */
@@ -53,15 +53,15 @@ public class MyoMsg {
     }
 
     /**
-     * See <br/>
-     * {@link eu.darken.myolib.services.Battery}<br/>
-     * {@link eu.darken.myolib.services.Classifier}<br/>
-     * {@link eu.darken.myolib.services.Control}<br/>
-     * {@link eu.darken.myolib.services.Device}<br/>
-     * {@link eu.darken.myolib.services.Emg}<br/>
-     * {@link eu.darken.myolib.services.Generic}<br/>
-     * {@link eu.darken.myolib.services.Imu}<br/>
-     * <p/>
+     * See <br>
+     * {@link eu.darken.myolib.services.Battery}<br>
+     * {@link eu.darken.myolib.services.Classifier}<br>
+     * {@link eu.darken.myolib.services.Control}<br>
+     * {@link eu.darken.myolib.services.Device}<br>
+     * {@link eu.darken.myolib.services.Emg}<br>
+     * {@link eu.darken.myolib.services.Generic}<br>
+     * {@link eu.darken.myolib.services.Imu}<br>
+     * <p>
      *
      * @param serviceUUID        e.g. {@link MyoService#getServiceUUID()} or {@link MyoCharacteristic#getServiceUUID()}
      * @param characteristicUUID e.g. {@link MyoCharacteristic#getCharacteristicUUID()}
@@ -143,7 +143,7 @@ public class MyoMsg {
      * {@link #getGattStatus()} != {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} <br>
      * after a transmission.
      *
-     * @param retryCounter -1 for infinite tries otherwise >=0 tries
+     * @param retryCounter -1 for infinite tries otherwise &gt;=0 tries
      */
     public void setRetryCounter(int retryCounter) {
         mRetryCounter = retryCounter;

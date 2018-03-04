@@ -5,9 +5,13 @@
  */
 package eu.darken.myolib.exampleapp;
 
+import android.Manifest;
 import android.app.Fragment;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +24,6 @@ import eu.darken.myolib.BaseMyo;
 import eu.darken.myolib.Myo;
 import eu.darken.myolib.MyoCmds;
 import eu.darken.myolib.MyoConnector;
-import eu.darken.myolib.MyoInfo;
-import eu.darken.myolib.msgs.MyoMsg;
 import eu.darken.myolib.tools.Logy;
 
 /**
@@ -45,7 +47,7 @@ public class DebugFragment extends Fragment implements BaseMyo.ConnectionListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_debug, container, false);
-        mContainer = (ViewGroup) layout.findViewById(R.id.container);
+        mContainer = layout.findViewById(R.id.container);
         return layout;
     }
 
@@ -53,6 +55,10 @@ public class DebugFragment extends Fragment implements BaseMyo.ConnectionListene
     public void onActivityCreated(Bundle savedInstanceState) {
         mMyoConnector = new MyoConnector(getActivity());
         super.onActivityCreated(savedInstanceState);
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        }
     }
 
     private MyoConnector.ScannerCallback mScannerCallback = new MyoConnector.ScannerCallback() {

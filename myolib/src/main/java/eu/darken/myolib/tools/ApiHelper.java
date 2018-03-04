@@ -13,7 +13,7 @@ import android.os.Build;
 public class ApiHelper {
 
     /**
-     * @return if >=21
+     * @return if &gt;=21
      */
     public static boolean hasLolliPop() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
