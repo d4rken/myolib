@@ -285,7 +285,7 @@ public class BaseMyo extends BluetoothGattCallback {
     /**
      * Submits a new message to the dispatcher of this device.
      * It will be put at the end of the queue and once it reaches the front.
-     * Messages are sequentially as otherwise instruction can be lost.<br/>
+     * Messages are sequentially as otherwise instruction can be lost.<br>
      * If dispatcher of this Myo is not yet running, {@link #connect()} will be called.
      * It will be taken care of that the Myo is ready before any transmission attempt will be made.
      * Don't alter the message object after submitting it
@@ -301,7 +301,7 @@ public class BaseMyo extends BluetoothGattCallback {
     }
 
     /**
-     * "Starts this Myo"<br/>
+     * "Starts this Myo"<br>
      * Launches the innerloop that dispatches {@link MyoMsg}.
      * This loop will wait until {@link #getConnectionState()} changes to {@link eu.darken.myolib.BaseMyo.ConnectionState#CONNECTED}
      * <p/>
@@ -337,9 +337,9 @@ public class BaseMyo extends BluetoothGattCallback {
     }
 
     /**
-     * Whether the Dispatcher is running.<br/>
+     * Whether the Dispatcher is running.<br>
      * NOT if the Myo device is connected.
-     * Use {@link #getConnectionState()} for that.<br/>
+     * Use {@link #getConnectionState()} for that.<br>
      * The dispatcher can be running, but the Myo device temporarily disconnected.
      *
      * @return true if the dispatcher is running
