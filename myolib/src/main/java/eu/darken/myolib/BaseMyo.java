@@ -131,7 +131,7 @@ public class BaseMyo extends BluetoothGattCallback {
 
     /**
      * Requires API21+ (Lollipop+)
-     * Calling this on < API21 will have no effect.<br>
+     * Calling this on &lt; API21 will have no effect.<br>
      * Changes the connection speed of this Myo.
      * This can be done on the fly.
      *
@@ -304,7 +304,7 @@ public class BaseMyo extends BluetoothGattCallback {
      * "Starts this Myo"<br>
      * Launches the innerloop that dispatches {@link MyoMsg}.
      * This loop will wait until {@link #getConnectionState()} changes to {@link eu.darken.myolib.BaseMyo.ConnectionState#CONNECTED}
-     * <p/>
+     * <p>
      * Calling this multiple times has no effect.
      */
     public void connect() {

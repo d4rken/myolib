@@ -30,11 +30,11 @@ public interface Processor {
     List<UUID> getSubscriptions();
 
     /**
-     * Will be called when new data arrived that this processor is subscribed for.<br/>
+     * Will be called when new data arrived that this processor is subscribed for.<br>
      * Don't execute expensive routines inside this method!
      * Spending too much time in this method blocks the
      * {@link android.bluetooth.BluetoothGattCallback#onCharacteristicChanged(BluetoothGatt, BluetoothGattCharacteristic)}
-     * of {@link eu.darken.myolib.BaseMyo} and can lead to packet loss! <br/>
+     * of {@link eu.darken.myolib.BaseMyo} and can lead to packet loss! <br>
      * It is strongly recommended to just add the packet to a data structure and process it on a
      * different thread.
      *

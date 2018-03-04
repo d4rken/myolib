@@ -61,7 +61,7 @@ public class MyoMsg {
      * {@link eu.darken.myolib.services.Emg}<br>
      * {@link eu.darken.myolib.services.Generic}<br>
      * {@link eu.darken.myolib.services.Imu}<br>
-     * <p/>
+     * <p>
      *
      * @param serviceUUID        e.g. {@link MyoService#getServiceUUID()} or {@link MyoCharacteristic#getServiceUUID()}
      * @param characteristicUUID e.g. {@link MyoCharacteristic#getCharacteristicUUID()}
@@ -143,7 +143,7 @@ public class MyoMsg {
      * {@link #getGattStatus()} != {@link android.bluetooth.BluetoothGatt#GATT_SUCCESS} <br>
      * after a transmission.
      *
-     * @param retryCounter -1 for infinite tries otherwise >=0 tries
+     * @param retryCounter -1 for infinite tries otherwise &gt;=0 tries
      */
     public void setRetryCounter(int retryCounter) {
         mRetryCounter = retryCounter;
