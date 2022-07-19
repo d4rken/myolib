@@ -1,5 +1,5 @@
 # myolib
-[ ![Download](https://api.bintray.com/packages/darken/maven/myolib/images/download.svg) ](https://bintray.com/darken/maven/myolib/_latestVersion)
+[![](https://jitpack.io/v/d4rken/myolib.svg)](https://jitpack.io/#d4rken/myolib)
 [![Coverage Status](https://coveralls.io/repos/github/d4rken/myolib/badge.svg)](https://coveralls.io/github/d4rken/myolib)
 [![Build Status](https://travis-ci.org/d4rken/myolib.svg?branch=master)](https://travis-ci.org/d4rken/myolib)
 
@@ -12,9 +12,21 @@ Contributions are welcome. If you submit pull-requests please adhere to the proj
 If you are using this library, i would love mention your project here, feel free to contact me.
 
 ## Setup
+Add it in your root build.gradle at the end of repositories:
+```groovy
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
 Include this in your apps build.gradle file:
-```java
-implementation 'eu.darken.myolib:myolib:0.0.5'
+```groovy
+dependencies {
+        implementation 'com.github.d4rken:myolib:0.0.5'
+}
 ```
 
 ## Examples
